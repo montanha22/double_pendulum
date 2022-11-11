@@ -8,7 +8,12 @@ from consts import PI
 from event_handlers import EventHandler, QuitHandler
 from loop import SimulationLoop
 from pendulum import DoublePendulum
-from renderers import FPSTrackerRenderer, PendulumsRenderer, SimulationRenderer
+from renderers import (
+    FPSTrackerRenderer,
+    InstructionsRenderer,
+    PendulumsRenderer,
+    SimulationRenderer,
+)
 from world import World
 
 
@@ -38,6 +43,7 @@ def main():
 
     pendulums_renderer = PendulumsRenderer(pendulums, screen, None, None, anchor)
     fps_renderer = FPSTrackerRenderer(screen)
+    instructions_renderer = InstructionsRenderer(screen)
 
     world = World(pendulums)
 
@@ -49,7 +55,9 @@ def main():
     event_handlers[pygame.KEYDOWN].append(quit_handler)
     event_handlers[pygame.QUIT].append(quit_handler)
 
-    renderer = SimulationRenderer(screen, [pendulums_renderer, fps_renderer])
+    renderer = SimulationRenderer(
+        screen, [pendulums_renderer, fps_renderer, instructions_renderer]
+    )
 
     loop = SimulationLoop(world, renderer, event_handlers, MS_PER_UPDATE)
 
