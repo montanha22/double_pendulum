@@ -7,18 +7,17 @@ This project aims to create a funny and beaultiful simulation of multiple double
 
 ### Create a venv and activate
 
-```powershell
-py -m venv .venv
-.\.venv\Scripts\activate
-
+```shell
+python3 -m venv .venv
+source .venv/bin/activate
 ```
 
 ### Install requirements
-```powershell
-py -m pip install -r requirements.txt
+```shell
+python3 -m pip install -r requirements.txt
 ```
 
 ### run it!
-```powershell
-py .\src\run.py
+```shell
+python3 main.py
 ```
