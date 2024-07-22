@@ -3,7 +3,7 @@
 This project aims to create a funny and beaultiful simulation of multiple double pendulums starting at close initial positions.
 
 ![double pendulum](double_pendulum.gif)
-## How to run (windows)
+## How to run
 
 ### Create a venv and activate
 
