@@ -1,1 +1,0 @@
-MS_PER_UPDATE = 1 / 2000

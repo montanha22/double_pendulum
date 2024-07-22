@@ -1,10 +1,9 @@
 from time import time
 
 import pygame
-
-from event_handlers import EventHandler
-from renderers import SimulationRenderer
-from world import World
+from src.event_handlers import EventHandler
+from src.renderers import SceneRenderer
+from src.world import World
 
 
 class Timer:
@@ -28,13 +27,13 @@ class SimulationLoop:
     def __init__(
         self,
         world: World,
-        renderer: SimulationRenderer,
+        scene_renderer: SceneRenderer,
         event_handlers: dict[pygame.event.Event, list[EventHandler]],
         ms_per_update: float,
     ):
         self.world = world
-        self.renderer = renderer
-        self.MPU = ms_per_update
+        self.renderer = scene_renderer
+        self.ms_per_update = ms_per_update
         self.event_handlers = event_handlers
 
     def run(self):
@@ -46,8 +45,8 @@ class SimulationLoop:
                     handler.handle(event)
 
             timer.tick()
-            while timer.lag >= self.MPU:
+            while timer.lag >= self.ms_per_update:
                 self.world.update()
-                timer.decrease_lag(self.MPU)
+                timer.decrease_lag(self.ms_per_update)
 
             self.renderer.render()

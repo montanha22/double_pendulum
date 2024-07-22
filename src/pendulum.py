@@ -3,6 +3,8 @@ from typing import Deque
 
 from numpy import cos, sin
 
+from src.consts import GRAVITY
+
 
 class DoublePendulum:
     def __init__(
@@ -16,7 +18,7 @@ class DoublePendulum:
         dtheta1: float = 0,
         dtheta2: float = 0,
         dt: float = 5e-2,
-        g: float = 10,
+        g: float = GRAVITY,
         trail_length: int = 2500,
     ) -> None:
 
@@ -57,10 +59,7 @@ class DoublePendulum:
             - 2
             * sin(self.theta1 - self.theta2)
             * self.m2
-            * (
-                self.dtheta2**2 * self.l2
-                + self.dtheta1**2 * self.l1 * cos(self.theta1 - self.theta2)
-            )
+            * (self.dtheta2**2 * self.l2 + self.dtheta1**2 * self.l1 * cos(self.theta1 - self.theta2))
         ) / (self.l1 * denom)
 
         d2theta2 = (

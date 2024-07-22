@@ -4,8 +4,7 @@ import pygame
 
 
 class EventHandler(Protocol):
-    def handle(self, event: pygame.event.Event):
-        ...
+    def handle(self, event: pygame.event.Event): ...
 
 
 class QuitHandler:

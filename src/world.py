@@ -1,4 +1,4 @@
-from pendulum import DoublePendulum
+from src.pendulum import DoublePendulum
 
 
 class World:
